@@ -1,11 +1,12 @@
 const JSON_TEXT: &str = r#"
 {
-    "things_tag": "animals",
-    "items": [
-        {"animal_tag": "cat"},
-        {"animal_tag": "xenomorph"},
-        {"animal_tag": "dog"}
-    ]
+    "animals": {
+        "items": [
+            {"animal_tag": "cat"},
+            {"animal_tag": "xenomorph"},
+            {"animal_tag": "dog"}
+        ]
+    }
 }
 "#;
 
@@ -15,7 +16,7 @@ fn main() {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
-#[serde(tag = "things_tag", rename_all = "snake_case")]
+#[serde(rename_all = "snake_case")]
 enum Things {
     Animals(Animals),
     Plants(Plants),
